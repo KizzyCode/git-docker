@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  DOCKERFILE: Dockerfile
+  DOCKERFILE: dockerfile
   IMAGE_TAG: kizzycode/git:latest
 
 jobs:
