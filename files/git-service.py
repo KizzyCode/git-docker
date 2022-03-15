@@ -41,6 +41,7 @@ class gituser:
     def _init_git(self) -> None:
         """Creates and symlinks the associated git directory"""
         os.makedirs(f"/srv/git/{self._name}", 0o700, exist_ok=True)
+        os.chown(f"/srv/git/{self._name}", int(self._uid), int(self._uid))
         os.symlink(f"/srv/git/{self._name}", f"/home/{self._name}/git")
 
     def create(self) -> None:
