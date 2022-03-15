@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  git:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    ports:
+      - "2222:22"
+    volumes:
+      - ./mount:/srv/git:rw

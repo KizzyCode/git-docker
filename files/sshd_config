@@ -1,0 +1,36 @@
+# Listening 
+Port 22
+AddressFamily any
+ListenAddress 0.0.0.0
+ListenAddress ::
+Protocol 2
+
+# Server identities
+HostKey /srv/git/.config/ssh_host_rsa_key
+HostKey /srv/git/.config/ssh_host_ed25519_key
+
+# Ciphers and keying
+KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384
+Ciphers aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-512
+
+# Logging
+SyslogFacility AUTHPRIV
+
+# Authentication:
+PermitRootLogin no 
+StrictModes yes
+MaxAuthTries 5
+
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+IgnoreRhosts yes
+
+PasswordAuthentication no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+
+# Misc
+AcceptEnv LANG LC_*
+AllowTcpForwarding no
+PrintMotd no
